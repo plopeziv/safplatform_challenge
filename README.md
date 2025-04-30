@@ -1,4 +1,4 @@
-# <p align="center" style="padding-top:20px">React Stat Viewer: A Multi-Sport Stats Dashboard </p>
+# <p align="center" style="padding-top:20px">Ruby Command Line Calculator</p>
 
 ## Project Overview
 
@@ -13,13 +13,13 @@ To set up and run the project locally, follow these steps:
 1. **Clone the Repository**
 
    ```
-
+    git clone https://github.com/plopeziv/safplatform_challenge.git
    ```
 
 2. **Install Dependencies**
 
    ```
-
+    bundle install
    ```
 
 3. **Run the Development Server**
@@ -40,14 +40,16 @@ To set up and run the project locally, follow these steps:
 
 #### Run tests
 
-```
+Run Test Suite
 
 ```
-
-#### Continuous Testing
-
+bundle exec rspec
 ```
 
+Run Specific file
+
+```
+bundle exec rspec spec/relative_file_spec.rb
 ```
 
 ## Game Rules
