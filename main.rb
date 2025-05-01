@@ -4,7 +4,7 @@ require_relative 'lib/shopping_cart'
 
 module PromptHelper
   def self.add_new_item()
-    name = PromptHelper.collect_user_input("What item would you like to add?")
+    name = PromptHelper.collect_user_input("\nWhat item would you like to add?")
     isFood = PromptHelper.collect_yes_no("Is this item food?")
     isBook =PromptHelper.collect_yes_no("Is this item a book")
     isMedical = PromptHelper.collect_yes_no("Is this item used for medical purposes?")
@@ -18,7 +18,7 @@ module PromptHelper
     newReceiptItem = ReceiptItem.new(sale_item: newSalesItem, quantity: quantity)
 
     puts "\nItem Summary:"
-    puts "#{quantity} #{isImported ? 'imported ' : ''}#{newSalesItem.name}: $#{newSalesItem.price}"
+    puts "#{quantity} #{isImported ? 'imported ' : ''}#{newSalesItem.name}: $#{newSalesItem.price}\n"
 
     return newReceiptItem
   end
@@ -55,7 +55,7 @@ module PromptHelper
 end
 
 if __FILE__ == $0 
-puts "Hello, world"
+puts "Welcome to the Pedro's Receipt Calculator!"
 
 receipt_items = ShoppingCart.new
 
