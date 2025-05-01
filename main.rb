@@ -1,5 +1,6 @@
 require_relative 'lib/sale_item'
 require_relative 'lib/receipt_item'
+require_relative 'lib/shopping_cart'
 
 module PromptHelper
   def self.add_new_item()
@@ -17,7 +18,7 @@ module PromptHelper
     newReceiptItem = ReceiptItem.new(sale_item: newSalesItem, quantity: quantity)
 
     puts "\nItem Summary:"
-    puts "#{quantity} #{newSalesItem.name}: $#{newSalesItem.price}"
+    puts "#{quantity} #{isImported ? 'imported ' : ''}#{newSalesItem.name}: $#{newSalesItem.price}"
 
     return newReceiptItem
   end
@@ -56,20 +57,17 @@ end
 if __FILE__ == $0 
 puts "Hello, world"
 
-receipt_items = []
+receipt_items = ShoppingCart.new
 
 loop do 
   new_receipt_item = PromptHelper.add_new_item()
-  receipt_items << new_receipt_item
+  receipt_items.add_item(new_receipt_item)
 
   break unless PromptHelper.collect_yes_no("Do you want to add another Item?")
 end 
 
-puts "\n--- Purchase Summary ---"
-receipt_items.each do |item|
-  puts"#{item.quantity} #{item.sale_item.imported ? 'imported' : ''} #{item.sale_item.name}: #{item.sale_item.price}" 
-end
+receipt_items.display_shopping_cart
 
-puts "Receipt for Purchase"
+receipt_items.display_purchase_receipt
 end
 
