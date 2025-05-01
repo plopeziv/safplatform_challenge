@@ -11,7 +11,7 @@ module PromptHelper
     isImported = PromptHelper.collect_yes_no("Is this item imported?")
     price = PromptHelper.collect_quantity("How much does this item cost?")
 
-    newSalesItem = SaleItem.new(name: name, isFood: isFood, isBook: isBook, imported: isImported, price: price)
+    newSalesItem = SaleItem.new(name: name, isFood: isFood, isBook: isBook, isMedical: isMedical, imported: isImported, price: price)
 
     quantity = PromptHelper.collect_quantity("How many #{newSalesItem.name} would you like?")
 
@@ -22,6 +22,7 @@ module PromptHelper
 
     return newReceiptItem
   end
+
   def self.collect_user_input(question)
     print("#{question}: ")
     return gets.chomp.strip
@@ -44,7 +45,6 @@ module PromptHelper
       print "#{question}: "
       input = gets.chomp.strip
   
-      # Accepts integers or decimals like "32", "32.74", "0.5"
       if input.match?(/^\d+(\.\d+)?$/) && input.to_f > 0
         return input.to_f
       end
