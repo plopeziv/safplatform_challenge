@@ -2,6 +2,13 @@ require 'receipt_item'
 require 'sale_item'
 
 RSpec.describe ReceiptItem do
+  it "calculates total price based on quantity" do
+    regular_item = SaleItem.new(name: "Cheap Item", price: 1)
+    receipt_item = ReceiptItem.new(sale_item: regular_item, quantity: 2)
+
+    expect(receipt_item.total_price).to eq(2.20)
+  end
+
   it "rounds correctly by rounding to the nearset 0.05" do
     regular_item = SaleItem.new(name: "Cheap Item", price: 1.01)
     receipt_item = ReceiptItem.new(sale_item: regular_item)
@@ -34,8 +41,8 @@ RSpec.describe ReceiptItem do
 
   it "Adds taxes to total price" do
     exempt_item = SaleItem.new(name: "Imported Wine", imported: true, price: 1)
-      receipt_item = ReceiptItem.new(sale_item: exempt_item)
+      receipt_item = ReceiptItem.new(sale_item: exempt_item, quantity: 2)
 
-      expect(receipt_item.total_price).to eq(1.15)
+      expect(receipt_item.total_price).to eq(2.30)
   end
 end
