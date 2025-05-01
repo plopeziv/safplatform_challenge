@@ -13,6 +13,11 @@ RSpec.describe SaleItem do
     expect(item.exempt).to eq(false)
   end
 
+  it "Rounds price to the nearest cent" do 
+    item = SaleItem.new(name: "Michigan Basil", price: 7.999)
+    expect(item.price).to eq(8.00)
+  end
+
   describe "exempt items" do
     it "is exempt if it is a book" do 
       book_item = SaleItem.new(name: "Song of Ice and Fire", isBook: true, price: 29.99)

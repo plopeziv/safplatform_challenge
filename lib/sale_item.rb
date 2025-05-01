@@ -9,7 +9,7 @@ class SaleItem
         @isMedical = isMedical
         @imported = imported
         @exempt = is_exempt?
-        @price = price
+        @price = price.to_f.round(2)
     end
 
     private
