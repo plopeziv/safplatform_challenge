@@ -12,15 +12,15 @@ To set up and run the project locally, follow these steps:
 
 1. **Clone the Repository**
 
-   ```
-    git clone https://github.com/plopeziv/safplatform_challenge.git
-   ```
+```
+git clone https://github.com/plopeziv/safplatform_challenge.git
+```
 
 2. **Install Dependencies**
 
-   ```
-    bundle install
-   ```
+```
+bundle install
+```
 
 ## Getting Started
 
